@@ -50,14 +50,15 @@ function App() {
 
   const onCountryChange = async (e) => {
     const countryCode = e.target.value;
-
+    console.log(e.target.value);
     const url =
       countryCode === "worldwide"
-        ? "https:/disease.sh/v3/covid-19/all"
-        : `https:disease.sh/v3/covid-19/countries/${countryCode}`;
+        ? "https://disease.sh/v3/covid-19/all"
+        : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
     await fetch(url)
       .then((res) => res.json())
       .then((data) => {
+        // console.log(data);
         setCountry(countryCode);
         setCountryInfo(data);
         console.log([data.countryInfo.lat, data.countryInfo.long]);
